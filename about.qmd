@@ -1,9 +1,21 @@
 ---
-title: "About"
+#title: "About"
 ---
 
-About this site
+# Wayland the smith
 
-```{r}
-1 + 1
-```
+Below is the production route of high-nitrogen alloyed sword called *Mimung*, according to **Wayland the smith**. He is is a **legendary figure from Germanic**, Norse, and Anglo-Saxon **mythology**.
+
+He is often depicted as a master blacksmith and craftsman with almost supernatural skill in forging weapons and artifacts.
+
+He searched for the finest piece of iron he could find, heated it until it glowed, and hammered it into a sword for seven days. Then he filed the sword into iron shavings, mixed them with goose feed, and fed the mixture to his geese.
+
+From the droppings, he washed the iron filings and melted them down to forge a new sword. Wayland repeated this process three times. Thus, the sword *Mimung* was created - a blade said to be sharper than any other sword of its time.
+
+From a **metallurgical perspective**, he did **everything right👌**. The iron filings absorbed nitrogen in the digestive tract of the geese, ultimately leading to high-strength (green) steel for the sword😉.
+
+At **Energietechnik Essen GmbH (ETE)**, we have a highly advanced **p**ressure-**e**lectro**s**lag-**r**emelting furnace - our **'smart geese'🚀** - that produce sophisticated nitrogen-alloyed stainless steels, and another unit is currently under construction (see [HighTechETE](https://www.linkedin.com/feed/update/urn:li:activity:7340666878916259840/) for more details).
+
+If you are interested in how we assess the performance💪 of - our **'smart geese'🚀** - take a look here "Verlinkung zur "High nitrogen alloyed steels".
+
+![Production of nitrogen alloyed sword according to Wayland the smith](WaylandTheSmith.png){fig-align="center"}

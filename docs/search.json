@@ -2,15 +2,134 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "NitrogenSteels",
+    "title": "High nitrogen alloyed stainless steels",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Nitrogen-alloyed stainless steels are special grades that are particularly used in the aerospace, energy, and medical sectors. Nitrogen, as a key alloying element, provides the material with high tensile strength, improves corrosion resistance, and stabilizes the formation of an austenitic microstructure.\nHowever, nitrogen has a low solubility in molten steel or iron (maximum approximately 0.04 wt-%). Higher nitrogen levels can be achieved by alloying with elements such as chromium, manganese, or molybdenum, which increase the solubility of nitrogen in molten steel. Another approach to retain nitrogen in molten steel is to increase the nitrogen partial pressure in the furnace. Energietechnik Essen GmbH (ETE) operates a pressure-electroslag-remelting (PESR) furnace to enhance the nitrogen content in stainless steels."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Wayland the smith",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Wayland the smith\nBelow is the production route of high-nitrogen alloyed sword called Mimung, according to Wayland the smith. He is is a legendary figure from Germanic, Norse, and Anglo-Saxon mythology.\nHe is often depicted as a master blacksmith and craftsman with almost supernatural skill in forging weapons and artifacts.\nHe searched for the finest piece of iron he could find, heated it until it glowed, and hammered it into a sword for seven days. Then he filed the sword into iron shavings, mixed them with goose feed, and fed the mixture to his geese.\nFrom the droppings, he washed the iron filings and melted them down to forge a new sword. Wayland repeated this process three times. Thus, the sword Mimung was created - a blade said to be sharper than any other sword of its time.\nFrom a metallurgical perspective, he did everything right👌. The iron filings absorbed nitrogen in the digestive tract of the geese, ultimately leading to high-strength (green) steel for the sword😉.\nAt Energietechnik Essen GmbH (ETE), we have a highly advanced pressure-electroslag-remelting furnace - our ‘smart geese’🚀 - that produce sophisticated nitrogen-alloyed stainless steels, and another unit is currently under construction (see HighTechETE for more details).\nIf you are interested in how we assess the performance💪 of - our ‘smart geese’🚀 - take a look here “Verlinkung zur”High nitrogen alloyed steels”.\n\n\n\nProduction of nitrogen alloyed sword according to Wayland the smith"
+  },
+  {
+    "objectID": "index.html#plot-mess--vs.-berechnete-n-gehalte-nach-multipler-linearer-regression",
+    "href": "index.html#plot-mess--vs.-berechnete-n-gehalte-nach-multipler-linearer-regression",
+    "title": "NitrogenSteels",
+    "section": "Plot Mess- vs. berechnete N-Gehalte nach multipler linearer Regression",
+    "text": "Plot Mess- vs. berechnete N-Gehalte nach multipler linearer Regression\n\n\n\n\n\n\n\n\nFigure 2: Berechnete vs. gemessene N-werte nach multipler linearer Regression für Produktionsjahr 2024 (mit Interaktion)"
+  },
+  {
+    "objectID": "index.html#effects-of-the-process-parameters",
+    "href": "index.html#effects-of-the-process-parameters",
+    "title": "NitrogenSteels",
+    "section": "Effects of the process parameters",
+    "text": "Effects of the process parameters\nIn Figure 3 are the coefficients (effect size) of the multiple linear regression showed. Variable_3 has the biggest influence on the nitrogen solubility, the higher this parameter is, the higher is also the nitrogen content in the molten steel. On the other hand the higher the Variable _4 and Variable _5 are, the lower is the solubility of nitrogen in the molten steel.\n\n\n\n\n\n\n\n\nFigure 3: Impact of diverse parameters on the nitrogen content in molten steel"
+  },
+  {
+    "objectID": "index.html#actual-vs.-estimated-nitrogen-content",
+    "href": "index.html#actual-vs.-estimated-nitrogen-content",
+    "title": "NitrogenSteels",
+    "section": "Actual vs. estimated nitrogen content",
+    "text": "Actual vs. estimated nitrogen content\n\n\n\n\n\n\n\n\nFigure 2: Actual vs. estimated nitrogen content"
+  },
+  {
+    "objectID": "about.html#actual-vs.-estimated-nitrogen-content",
+    "href": "about.html#actual-vs.-estimated-nitrogen-content",
+    "title": "Nitrogen Steels",
+    "section": "Actual vs. estimated nitrogen content",
+    "text": "Actual vs. estimated nitrogen content\n\n\n\n\n\n\n\n\nFigure 2: Actual vs. estimated nitrogen content"
+  },
+  {
+    "objectID": "about.html#effects-of-the-process-parameters",
+    "href": "about.html#effects-of-the-process-parameters",
+    "title": "Nitrogen Steels",
+    "section": "Effects of the process parameters",
+    "text": "Effects of the process parameters\nIn Figure 3 are the coefficients (effect size) of the multiple linear regression showed. Variable_3 has the biggest influence on the nitrogen solubility, the higher this parameter is, the higher is also the nitrogen content in the molten steel. On the other hand the higher the Variable _4 and Variable _5 are, the lower is the solubility of nitrogen in the molten steel.\n\n\n\n\n\n\n\n\nFigure 3: Impact of diverse parameters on the nitrogen content in molten steel"
+  },
+  {
+    "objectID": "PESR.html",
+    "href": "PESR.html",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "",
+    "text": "Nitrogen alloyed stainless steels are special grades, which particularly used in aero space, energy- and medicine sector. Nitrogen as key alloy element gives the materials high tensile strength, improve the corrosion resistance and stabilize the formation of austenitic microstructure.\nBut nitrogen has low solubility in molten steeel / iron (max. round about 0.04 wt-%). One can get more nitrogen by alloying with elements like chromium, manganese or molybdenum, that increase the solubility of nitrogen in molten steel. Another possibility to catch nitrogen in molten steel is the increasing of the nitrogen partial pressure in the furnace. Energietechnik Essen GmbH operate with pressure-electroslag-remelting (PESR) furnace to increase the nitrogen content of stainless steels."
+  },
+  {
+    "objectID": "PESR.html#actual-vs.-estimated-nitrogen-content",
+    "href": "PESR.html#actual-vs.-estimated-nitrogen-content",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Actual vs. estimated nitrogen content",
+    "text": "Actual vs. estimated nitrogen content\n\n\n\n\n\n\n\n\nFigure 2: Actual vs. estimated nitrogen content"
+  },
+  {
+    "objectID": "PESR.html#effects-of-the-process-parameters",
+    "href": "PESR.html#effects-of-the-process-parameters",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Effects of the process parameters",
+    "text": "Effects of the process parameters\nIn Figure 3 are the coefficients (effect size) of the multiple linear regression showed. Variable_3 has the biggest influence on the nitrogen solubility, the higher this parameter is, the higher is also the nitrogen content in the molten steel. On the other hand the higher the Variable _4 and Variable _5 are, the lower is the solubility of nitrogen in the molten steel.\n\n\n\n\n\n\n\n\nFigure 3: Impact of diverse parameters on the nitrogen content in molten steel"
+  },
+  {
+    "objectID": "PESR.html#effects-of-the-process-parameters-according-to-mlr",
+    "href": "PESR.html#effects-of-the-process-parameters-according-to-mlr",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Effects of the process parameters according to mlr",
+    "text": "Effects of the process parameters according to mlr\nIn Figure 3 are the coefficients (effect size) of the multiple linear regression showed. Variable_3 has the biggest influence on the nitrogen solubility, the higher this parameter is, the higher is also the nitrogen content in the molten steel. On the other hand the higher the Variable _4 and Variable _5 are, the lower is the solubility of nitrogen in the molten steel.\n\n\n\n\n\n\n\n\nFigure 3: Impact of diverse parameters on the nitrogen content in molten steel\n\n\n\n\n\nBut according to relative small R^2 the mlr model can not describe the deviations in response-value (nitrogen content) not really good.\nLet us use machine learning algorithm eXtreme Gradient Boosting with XGBoost package in R"
+  },
+  {
+    "objectID": "PESR.html#actual-vs.-estimated-nitrogen-content-according-to-mlr",
+    "href": "PESR.html#actual-vs.-estimated-nitrogen-content-according-to-mlr",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Actual vs. estimated nitrogen content according to mlr",
+    "text": "Actual vs. estimated nitrogen content according to mlr\n\n\n\n\n\n\n\n\nFigure 2: Actual vs. estimated nitrogen content according to mlr"
+  },
+  {
+    "objectID": "PESR.html#feature-importance-according-to-mlr",
+    "href": "PESR.html#feature-importance-according-to-mlr",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Feature importance according to mlr",
+    "text": "Feature importance according to mlr\nIn Figure 3 are the coefficients (effect size) of the multiple linear regression showed. Variable_3 has the biggest influence on the nitrogen solubility, the higher this parameter is, the higher is also the nitrogen content in the molten steel. On the other hand the higher the Variable _4 and Variable _5 are, the lower is the solubility of nitrogen in the molten steel.\n\n\n\n\n\n\n\n\nFigure 3: Impact of diverse parameters on the nitrogen content in molten steel\n\n\n\n\n\nBut according to relative small R^2 the mlr model can not describe the deviations in response-value (nitrogen content) not really good.\nLet us use machine learning algorithm eXtreme Gradient Boosting with XGBoost package in R"
+  },
+  {
+    "objectID": "PESR.html#actual-vs.-estimated-nitrogen-content-according-to-xgboost",
+    "href": "PESR.html#actual-vs.-estimated-nitrogen-content-according-to-xgboost",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Actual vs. estimated nitrogen content according to XGBOOST",
+    "text": "Actual vs. estimated nitrogen content according to XGBOOST\nThe R2 with 0.54 is compared to mlr ( 0.41) much better!\nOf course this can be improved by including of further process parameters. But for the sake of simplicity we will use here only five parameters.\n\n\n\n\n\n\n\n\nFigure 4: Actual vs. estimated nitrogen content according to XGBoost"
+  },
+  {
+    "objectID": "PESR.html#feature-importance-according-to-tree-shap",
+    "href": "PESR.html#feature-importance-according-to-tree-shap",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Feature importance according to “Tree Shap”",
+    "text": "Feature importance according to “Tree Shap”\nThe SHAP summary plot is a very suitable depiction to get a overview about the effect sizes of the parameters (for more information to “SHAP for XGBoost in R” see SHAPvalues).\nLike mlr the parameter_3 is the most important process parameter to control the nitrogen content in pressure-electroslag-remelting furnace! As this increases, the nitrogen content of the molten steel also increases.\n\n\n\n\n\n\n\n\nFigure 5: Effects of individual parameters according to XGBOOST\n\n\n\n\n\nThe influence of individual process parameters are showed in detail below.\n\n\n\n\n\n\n\n\nFigure 6: Progression of effects of individual parameters according to XGBOOST"
+  },
+  {
+    "objectID": "index.html#actual-vs.-estimated-nitrogen-content-according-to-mlr",
+    "href": "index.html#actual-vs.-estimated-nitrogen-content-according-to-mlr",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Actual vs. estimated nitrogen content according to MLR",
+    "text": "Actual vs. estimated nitrogen content according to MLR\n\n\n\n\n\n\n\n\nFigure 2: Actual vs. estimated nitrogen content according to mlr"
+  },
+  {
+    "objectID": "index.html#feature-importance-according-to-mlr",
+    "href": "index.html#feature-importance-according-to-mlr",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Feature importance according to MLR",
+    "text": "Feature importance according to MLR\nFigure 3 shows the scaled coefficients of the MLR model. Variable_3 has the greatest influence on nitrogen solubility: the higher this parameter, the higher the nitrogen content in the molten steel. Conversely, the higher Variable_4 and Variable_5, the lower the solubility of nitrogen in the molten steel.\n\n\n\n\n\n\n\n\nFigure 3: Impact of diverse parameters on the nitrogen content in molten steel\n\n\n\n\n\nHowever, due to the relatively small R² value, the MLR model cannot adequately capture the deviations in the response variable (nitrogen content). Let us apply the eXtreme Gradient Boosting algorithm using the XGBoost package in R to determine whether it improves the model performance."
+  },
+  {
+    "objectID": "index.html#actual-vs.-estimated-nitrogen-content-according-to-xgboost",
+    "href": "index.html#actual-vs.-estimated-nitrogen-content-according-to-xgboost",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Actual vs. estimated nitrogen content according to XGBOOST",
+    "text": "Actual vs. estimated nitrogen content according to XGBOOST\nThe R² value of 0.54 is significantly higher compared to that of the MLR model (0.41), indicating a much better fit.\nOf course, this can be further improved by including additional process parameters. For the sake of simplicity, we have used only five parameters here.\n\n\n\n\n\n\n\n\nFigure 4: Actual vs. estimated nitrogen content according to XGBoost"
+  },
+  {
+    "objectID": "index.html#feature-importance-according-to-tree-shap",
+    "href": "index.html#feature-importance-according-to-tree-shap",
+    "title": "High nitrogen alloyed stainless steels",
+    "section": "Feature importance according to “Tree Shap”",
+    "text": "Feature importance according to “Tree Shap”\nThe SHAP summary plot provides an excellent visualization for obtaining an overview of the effect sizes of the parameters (for more information to “SHAP for XGBoost in R” see SHAPvalues).\nSimilar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the pressure-electroslag-remelting furnace. As this parameter increases, the nitrogen content in the molten steel also increases.\n\n\n\n\n\n\n\n\nFigure 5: Effects of individual parameters according to XGBOOST\n\n\n\n\n\nThe influence of individual process parameters is shown in detail below. The red line indicates the curve progression according to the XGB model, and the points represent the measured SHAP values for each process parameter. For instance, as parameter_3 (x-axis) increases, the SHAP value (y-axis) - and consequently the nitrogen content in the steel - also increases.\n\n\n\n\n\n\n\n\nFigure 6: Progression of effects of individual parameters according to XGBOOST"
   }
 ]

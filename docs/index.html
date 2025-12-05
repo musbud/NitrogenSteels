@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NitrogenSteels</title>
+<title>Optimization of pressure-electroslag-remelting process</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -113,27 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">NitrogenSteels</span>
+    <span class="navbar-title">Optimization of pressure-electroslag-remelting process</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+        <div class="quarto-navbar-tools">
+    <a href="https://github.com/musbud/ANOVA-CuttingDiscs" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/mustafa-budak-0b1457248/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
 </div>
+          <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -142,40 +95,200 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#high-nitrogen-alloyed-stainless-steels" id="toc-high-nitrogen-alloyed-stainless-steels" class="nav-link active" data-scroll-target="#high-nitrogen-alloyed-stainless-steels">High nitrogen alloyed stainless steels</a></li>
+  <li><a href="#analysis-of-process-parameters-in-pesr" id="toc-analysis-of-process-parameters-in-pesr" class="nav-link" data-scroll-target="#analysis-of-process-parameters-in-pesr">Analysis of process parameters in PESR</a></li>
+  <li><a href="#multiple-linear-regression-mlr" id="toc-multiple-linear-regression-mlr" class="nav-link" data-scroll-target="#multiple-linear-regression-mlr">Multiple linear regression (MLR)</a>
+  <ul class="collapse">
+  <li><a href="#actual-vs.-estimated-nitrogen-content-according-to-mlr" id="toc-actual-vs.-estimated-nitrogen-content-according-to-mlr" class="nav-link" data-scroll-target="#actual-vs.-estimated-nitrogen-content-according-to-mlr">Actual vs.&nbsp;estimated nitrogen content according to MLR</a></li>
+  <li><a href="#feature-importance-according-to-mlr" id="toc-feature-importance-according-to-mlr" class="nav-link" data-scroll-target="#feature-importance-according-to-mlr">Feature importance according to MLR</a></li>
+  </ul></li>
+  <li><a href="#xgboost" id="toc-xgboost" class="nav-link" data-scroll-target="#xgboost">XGBoost</a>
+  <ul class="collapse">
+  <li><a href="#actual-vs.-estimated-nitrogen-content-according-to-xgboost" id="toc-actual-vs.-estimated-nitrogen-content-according-to-xgboost" class="nav-link" data-scroll-target="#actual-vs.-estimated-nitrogen-content-according-to-xgboost">Actual vs.&nbsp;estimated nitrogen content according to XGBOOST</a></li>
+  <li><a href="#feature-importance-according-to-tree-shap" id="toc-feature-importance-according-to-tree-shap" class="nav-link" data-scroll-target="#feature-importance-according-to-tree-shap">Feature importance according to “Tree Shap”</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">NitrogenSteels</h1>
+
+
+
+<section id="high-nitrogen-alloyed-stainless-steels" class="level1">
+<h1>High nitrogen alloyed stainless steels</h1>
+<p>Nitrogen-alloyed stainless steels are special grades that are particularly used in the aerospace, energy, and medical sectors. Nitrogen, as a key alloying element, provides the material with high tensile strength, improves corrosion resistance, and stabilizes the formation of an austenitic microstructure.</p>
+<p>However, nitrogen has a low solubility in molten steel or iron (maximum approximately 0.04 wt-%). Higher nitrogen levels can be achieved by alloying with elements such as chromium, manganese, or molybdenum, which increase the solubility of nitrogen in molten steel. Another approach to retain nitrogen in molten steel is to increase the nitrogen partial pressure in the furnace. <a href="https://www.gmh-gruppe.de/standorte/energietechnik-essen-gmbh/">Energietechnik Essen GmbH</a> (ETE) operates a <strong>p</strong>ressure-<strong>e</strong>lectro<strong>s</strong>lag-<strong>r</strong>emelting (PESR) furnace to enhance the nitrogen content in stainless steels.</p>
+</section>
+<section id="analysis-of-process-parameters-in-pesr" class="level1">
+<h1>Analysis of process parameters in PESR</h1>
+<p>The production of nitrogen-alloyed stainless steels requires in-depth knowledge of the entire process. Understanding the relationship between process parameters and nitrogen content is crucial for manufacturing high-quality steel products.</p>
+<p>For an initial estimation of the relationships between process parameters and nitrogen content, we use a correlation matrix (see <a href="#fig-correlationmatrix" class="quarto-xref">Figure&nbsp;1</a>).</p>
+<p>According to the correlation matrix, Variable_3 shows the strongest positive correlation with the nitrogen content in the steel. This means that the higher Variable_3 is, the higher the nitrogen content in the grade. Conversely, as Variable_4 increases, the nitrogen content decreases; this parameter exhibits a negative correlation with nitrogen. Variable_5 shows almost no correlation with nitrogen, suggesting it has little to no effect on the nitrogen content of the steel.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-correlationmatrix" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlationmatrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-correlationmatrix-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlationmatrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Correlationmatrix
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>However, correlation does not imply causation. The next step will be to determine the significance of these results using an F-test for the multiple regression model.</p>
+</section>
+<section id="multiple-linear-regression-mlr" class="level1">
+<h1>Multiple linear regression (MLR)</h1>
+<p>In regression analysis, the&nbsp;<a href="https://www.geeksforgeeks.org/r-language/anova-test-in-r-programming/"><strong>ANOVA F-test</strong></a>&nbsp;is used to evaluate whether the model respectively the model-parameters significantly explains the variability in the dependent variable, we will use a significance level of 0.05.</p>
+<p>Based on the F-statistic, the model (with a p-value &lt; 2.2e-16) and its parameters are statistically significant.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>
+Call:
+lm(formula = N ~ scale(parameter_1) + scale(parameter_2) + scale(parameter_3) + 
+    scale(parameter_4) + scale(parameter_5), data = train.data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.070538 -0.012924  0.000669  0.013388  0.080694 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         0.3725901  0.0004074 914.657  &lt; 2e-16 ***
+scale(parameter_1)  0.0048780  0.0004937   9.880  &lt; 2e-16 ***
+scale(parameter_2)  0.0029813  0.0004994   5.969 2.72e-09 ***
+scale(parameter_3)  0.0146858  0.0004088  35.921  &lt; 2e-16 ***
+scale(parameter_4) -0.0026416  0.0004159  -6.351 2.52e-10 ***
+scale(parameter_5) -0.0034257  0.0004156  -8.242 2.70e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.02047 on 2519 degrees of freedom
+Multiple R-squared:  0.4113,    Adjusted R-squared:  0.4102 
+F-statistic:   352 on 5 and 2519 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
+<section id="actual-vs.-estimated-nitrogen-content-according-to-mlr" class="level2">
+<h2 class="anchored" data-anchor-id="actual-vs.-estimated-nitrogen-content-according-to-mlr">Actual vs.&nbsp;estimated nitrogen content according to MLR</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-ActualVsEstimatedMLR" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ActualVsEstimatedMLR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-ActualVsEstimatedMLR-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ActualVsEstimatedMLR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Actual vs.&nbsp;estimated nitrogen content according to mlr
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-importance-according-to-mlr" class="level2">
+<h2 class="anchored" data-anchor-id="feature-importance-according-to-mlr">Feature importance according to MLR</h2>
+<p><a href="#fig-EffectLinearRegression" class="quarto-xref">Figure&nbsp;3</a> shows the scaled coefficients of the MLR model. Variable_3 has the greatest influence on nitrogen solubility: the higher this parameter, the higher the nitrogen content in the molten steel. Conversely, the higher Variable_4 and Variable_5, the lower the solubility of nitrogen in the molten steel.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-EffectLinearRegression" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-EffectLinearRegression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-EffectLinearRegression-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-EffectLinearRegression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Impact of diverse parameters on the nitrogen content in molten steel
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>However, due to the relatively small R² value, the MLR model cannot adequately capture the deviations in the response variable (nitrogen content). Let us apply the eXtreme Gradient Boosting algorithm using the XGBoost package in R to determine whether it improves the model performance.</p>
+</section>
+</section>
+<section id="xgboost" class="level1">
+<h1>XGBoost</h1>
+<p>Below are the optimal cross-validation results and tuning parameters (called <em>hyperparameters</em>, for more information visit <a href="https://carpentries-incubator.github.io/r-ml-tabular-data/06-Exploration/index.html">TuningOfParameters</a>) for XGBoost method. Thanks to this hyperparameters the model will optimize the estimation of nitrogen content respectively the reliability of the XGBoost-model.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    nrounds max_depth learning_rate gamma colsample_bytree min_child_weight
+773     100         8           0.1     0                1                3
+    subsample reg_lambda reg_alpha iter train_rmse_mean train_rmse_std
+773         1          1         0   70      0.01246913   0.0002125366
+    test_rmse_mean test_rmse_std
+773     0.01868794  0.0005852239</code></pre>
+</div>
+</div>
+<section id="actual-vs.-estimated-nitrogen-content-according-to-xgboost" class="level2">
+<h2 class="anchored" data-anchor-id="actual-vs.-estimated-nitrogen-content-according-to-xgboost">Actual vs.&nbsp;estimated nitrogen content according to XGBOOST</h2>
+<p>The R² value of 0.54 is significantly higher compared to that of the MLR model (0.41), indicating a much better fit.</p>
+<p>Of course, this can be further <strong>improved</strong> <strong>by including additional process parameters</strong>. <strong>For the sake of simplicity, we have used only five parameters here.</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-ActualVsEstimatedXGBoost" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ActualVsEstimatedXGBoost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-ActualVsEstimatedXGBoost-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ActualVsEstimatedXGBoost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Actual vs.&nbsp;estimated nitrogen content according to XGBoost
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-importance-according-to-tree-shap" class="level2">
+<h2 class="anchored" data-anchor-id="feature-importance-according-to-tree-shap">Feature importance according to “Tree Shap”</h2>
+<p>The SHAP summary plot provides an excellent visualization for obtaining an overview of the effect sizes of the parameters (for more information to “SHAP for XGBoost in R” see <a href="https://liuyanguu.github.io/post/2019/07/18/visualization-of-shap-for-xgboost/">SHAPvalues</a>).</p>
+<p>Similar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the <strong>p</strong>ressure-<strong>e</strong>lectro<strong>s</strong>lag-<strong>r</strong>emelting furnace. As this parameter increases, the nitrogen content in the molten steel also increases.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-ShapFeatureSummary" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ShapFeatureSummary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-ShapFeatureSummary-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ShapFeatureSummary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Effects of individual parameters according to XGBOOST
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The influence of individual process parameters is shown in detail below. The red line indicates the curve progression according to the XGB model, and the points represent the measured SHAP values for each process parameter. For instance, as parameter_3 (x-axis) increases, the SHAP value (y-axis) - and consequently the nitrogen content in the steel - also increases.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-ShapFeatureprogression" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ShapFeatureprogression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-ShapFeatureprogression-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ShapFeatureprogression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Progression of effects of individual parameters according to XGBOOST
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The assessment of the <strong>p</strong>ressure-<strong>e</strong>lectro<strong>s</strong>lag-<strong>r</strong>emelting process was carried out in this work using data analysis techniques, including multiple linear regression (MLR) and machine learning algorithms such as Extreme Gradient Boosting (XGB). We observed that modeling with Extreme Gradient Boosting (XGB) demonstrated superior performance and provided a more effective assessment of feature importance compared to MLR.</p>
+<p>Data analysis is only one of the many methods we use at <a href="https://www.gmh-gruppe.de/standorte/energietechnik-essen-gmbh/">ETE</a>. In the next step, we will present how we optimize individual steel grades and processes through <strong>simulation</strong>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -566,6 +679,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2025, Mustafa Budak</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
 
 
 

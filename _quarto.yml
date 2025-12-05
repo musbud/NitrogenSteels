@@ -3,18 +3,28 @@ project:
   output-dir: docs
 
 website:
-  title: "NitrogenSteels"
+  title: "Optimization of pressure-electroslag-remelting process"
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-
+    background: primary
+    search: true
+    #left:
+        #- text: "High nitrogen alloyed stainless steels"
+         # href: index.qmd
+      #- about.qmd
+      #- PESR.qmd
+    tools:
+      - icon: github
+        href: https://github.com/musbud/ANOVA-CuttingDiscs
+      - icon: linkedin
+        href: https://www.linkedin.com/in/mustafa-budak-0b1457248/
+  page-footer:
+    right: "Built with [Quarto](https://quarto.org/)"
+    left: "&copy; Copyright 2025, Mustafa Budak"  
+      
 format:
   html:
-    theme: cosmo
+    theme: cerulean
     css: styles.css
     toc: true
 
 editor: visual
-
