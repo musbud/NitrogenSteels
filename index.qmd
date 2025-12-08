@@ -52,6 +52,8 @@ In regression analysis, the [**ANOVA F-test**](https://www.geeksforgeeks.org/r-
 
 Based on the F-statistic, the model (with a p-value \< 2.2e-16) and its parameters are statistically significant.
 
+The R² value is 0.45 for the "test.data" (quite small).
+
 ```{r}
 #| warning: FALSE
 #| echo: False
@@ -84,9 +86,13 @@ summary(reg.mod)
 # prediction
 pred.reg <- predict(reg.mod, test.data)
 test.data$predict <- pred.reg
+```
 
-# calculate R^2 
-# (R2 = 1 - sum((test.data$N - test.data$predict)^2) / sum((test.data$N - mean(test.data$N))^2))
+```{r}
+#| echo: True
+
+# calculate R^2 for test.data 
+(R2 = 1 - sum((test.data$N - test.data$predict)^2) / sum((test.data$N - mean(test.data$N))^2))
 ```
 
 ## Actual vs. estimated nitrogen content according to MLR
@@ -109,7 +115,7 @@ ggplot(test.data, aes(x = predict, y = N)) +
   geom_abline(intercept=0, slope=1) +
   scale_x_continuous(breaks = pretty_breaks(n = 10), limits = c(0.3, 0.46)) +
   scale_y_continuous(breaks = pretty_breaks(n = 10), limits = c(0.3, 0.46)) +
-  theme_bw(base_size = 25) + annotate("text", x = 0.43, y = 0.32, label = "R^2 == 0.41", size = 8, parse = T) +
+  theme_bw(base_size = 25) + annotate("text", x = 0.43, y = 0.32, label = "R^2 == 0.45", size = 8, parse = T) +
   labs(x='estimated nitrogen content [wt.%]', y='actual nitrogen content [wt.%]', title='Multiple lineare Regression')
 ```
 
@@ -264,7 +270,7 @@ test.data$predict <- pred_y
 
 ## Actual vs. estimated nitrogen content according to XGBOOST
 
-The R² value of 0.54 is significantly higher compared to that of the MLR model (0.41), indicating a much better fit.
+The R² value of 0.54 is significantly higher compared to that of the MLR model (0.45), indicating a much better fit.
 
 Of course, this can be further **improved** **by including additional process parameters**. **For the sake of simplicity, we have used only five parameters here.**
 

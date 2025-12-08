@@ -123,7 +123,7 @@
     "href": "index.html#actual-vs.-estimated-nitrogen-content-according-to-xgboost",
     "title": "High nitrogen alloyed stainless steels",
     "section": "Actual vs. estimated nitrogen content according to XGBOOST",
-    "text": "Actual vs. estimated nitrogen content according to XGBOOST\nThe R² value of 0.54 is significantly higher compared to that of the MLR model (0.41), indicating a much better fit.\nOf course, this can be further improved by including additional process parameters. For the sake of simplicity, we have used only five parameters here.\n\n\n\n\n\n\n\n\nFigure 4: Actual vs. estimated nitrogen content according to XGBoost"
+    "text": "Actual vs. estimated nitrogen content according to XGBOOST\nThe R² value of 0.54 is significantly higher compared to that of the MLR model (0.45), indicating a much better fit.\nOf course, this can be further improved by including additional process parameters. For the sake of simplicity, we have used only five parameters here.\n\n\n\n\n\n\n\n\nFigure 4: Actual vs. estimated nitrogen content according to XGBoost"
   },
   {
     "objectID": "index.html#feature-importance-according-to-tree-shap",
