@@ -34,16 +34,14 @@ library(ggcorrplot)
 library(caret)
 
 # load data
-data.schleuse.cor <- readRDS("data.schleuse.cor.rds") # load your data set
+data.cor <- readRDS("data.cor.rds") # load your data set
 
-# rename C, Cr, Si, V and W
-data.schleuse.cor <- data.schleuse.cor %>% mutate(parameter_1 = C, parameter_2 = Cr, parameter_3 = Si, parameter_4 = W, parameter_5 = Nb) %>% filter(N > 0)
-################################## Für Darstellung in der großen Runde
-cor_matrix.chem <- cor(data.schleuse.cor[, c("N", "parameter_1", "parameter_2", "parameter_3", "parameter_4", "parameter_5")], use = "pairwise.complete.obs")  # Ges-Druck viele Na"s
+# create correlation matrix
+cor_matrix <- cor(data.cor[, c("N", "parameter_1", "parameter_2", "parameter_3", "parameter_4", "parameter_5")], use = "pairwise.complete.obs")  # Ges-Druck viele Na"s
 
 
-# Plot Korrelationsmatrix
-ggcorrplot(cor_matrix.chem)
+# Plot correlation matrix
+ggcorrplot(cor_matrix)
 ```
 
 However, correlation does not imply causation. The next step will be to determine the significance of these results using an F-test for the multiple regression model.
