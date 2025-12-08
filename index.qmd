@@ -34,7 +34,7 @@ library(ggcorrplot)
 library(caret)
 
 # load data
-data.schleuse.cor <- readRDS("data.schleuse.cor.rds")
+data.schleuse.cor <- readRDS("data.schleuse.cor.rds") # load your data set
 
 # rename C, Cr, Si, V and W
 data.schleuse.cor <- data.schleuse.cor %>% mutate(parameter_1 = C, parameter_2 = Cr, parameter_3 = Si, parameter_4 = W, parameter_5 = Nb) %>% filter(N > 0)
@@ -314,7 +314,7 @@ ggplot(test.data, aes(x = predict, y = N)) +
 
 The SHAP summary plot provides an excellent visualization for obtaining an overview of the effect sizes of the parameters (for more information to "SHAP for XGBoost in R" see [SHAPvalues](https://liuyanguu.github.io/post/2019/07/18/visualization-of-shap-for-xgboost/)).
 
-Similar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the **p**ressure-**e**lectro**s**lag-**r**emelting furnace. As this parameter increases, the nitrogen content in the molten steel also increases.
+Similar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the **p**ressure-**e**lectro**s**lag-**r**emelting (PESR) furnace. As this parameter increases, the nitrogen content in the molten steel also increases.
 
 ```{r}
 #| warning: FALSE
@@ -369,6 +369,6 @@ gridExtra::grid.arrange(grobs = fig.list, ncol = 2)
 
 # Conclusion
 
-The assessment of the **p**ressure-**e**lectro**s**lag-**r**emelting process was carried out in this work using data analysis techniques, including multiple linear regression (MLR) and machine learning algorithms such as Extreme Gradient Boosting (XGB). We observed that modeling with Extreme Gradient Boosting (XGB) demonstrated superior performance and provided a more effective assessment of feature importance compared to MLR.
+The assessment of the **p**ressure-**e**lectro**s**lag-**r**emelting (PESR) process was carried out in this work using data analysis techniques, including multiple linear regression (MLR) and machine learning algorithms such as Extreme Gradient Boosting (XGB). We observed that modeling with Extreme Gradient Boosting (XGB) demonstrated superior performance and provided a more effective assessment of feature importance compared to MLR.
 
 Data analysis is only one of the many methods we use at [ETE](https://www.gmh-gruppe.de/standorte/energietechnik-essen-gmbh/). In the next step, we will present how we optimize individual steel grades and processes through **simulation**.
