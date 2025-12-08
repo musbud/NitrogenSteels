@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Optimization of pressure-electroslag-remelting process</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Optimization of pressure-electroslag-remelting process</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools">
+    <a href="https://github.com/musbud/ANOVA-CuttingDiscs" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/mustafa-budak-0b1457248/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<!-- # High nitrogen alloyed stainless steels -->
+<!-- Nitrogen alloyed stainless steels are special grades, which particularly used in aero space, energy- and medicine sector. Nitrogen as key alloy element gives the materials high tensile strength, improve the corrosion resistance and stabilize the formation of austenitic microstructure. -->
+<!-- But nitrogen has low solubility in molten steeel / iron (max. round about 0.04 wt-%). One can get more nitrogen by alloying with elements like chromium, manganese or molybdenum, that increase the solubility of nitrogen in molten steel. Another possibility to catch nitrogen in molten steel is the increasing of the nitrogen partial pressure in the furnace. Energietechnik Essen GmbH operate with **p**ressure-**e**lectro**s**lag-**r**emelting (PESR) furnace to increase the nitrogen content of stainless steels. -->
+<!-- # Analysis of process parameters in PESR -->
+<!-- The production of nitrogen alloyed stainless steels needs a deep know-how of the whole process. The understanding of the relationship of the process parameters and nitrogen content is crucial for manufracturing of high qualitatively steel products. -->
+<!-- For a first estimation of the relationships between process parameters and nitrogen content we use a correlation matrix (see @fig-correlationmatrix). -->
+<!-- According to correlation matrix the variable_3 has the biggest positive correlation with the nitrogen content of the steel. That means the higher the variable_3 is, the higher is also the nitrogen content in the grade. On the other hand, the higher variable_4 is, the lower is nitrogen content; this parameter has a negative correlation with nitrogen. The variable_5 doesen't have almost any correlation with nitrogen, it seems to have no effect on the nitrogen content of the steel. -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- #| label: fig-correlationmatrix -->
+<!-- #| fig-cap: Correlationmatrix -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-pos: "H" -->
+<!-- #| fig-width: 10 -->
+<!-- #| fig-height: 10 -->
+<!-- # loadlibraries -->
+<!-- library(tidyverse) -->
+<!-- library(scales) -->
+<!-- library(ggcorrplot) -->
+<!-- library(caret) -->
+<!-- # load data -->
+<!-- data.schleuse.cor <- readRDS("data.schleuse.cor.rds") -->
+<!-- # rename C, Cr, Si, V and W -->
+<!-- data.schleuse.cor <- data.schleuse.cor %>% mutate(parameter_1 = C, parameter_2 = Cr, parameter_3 = Si, parameter_4 = W, parameter_5 = Nb) %>% filter(N > 0) -->
+<!-- ################################## Für Darstellung in der großen Runde -->
+<!-- cor_matrix.chem <- cor(data.schleuse.cor[, c("N", "parameter_1", "parameter_2", "parameter_3", "parameter_4", "parameter_5")], use = "pairwise.complete.obs")  # Ges-Druck viele Na"s -->
+<!-- # Plot Korrelationsmatrix -->
+<!-- ggcorrplot(cor_matrix.chem) -->
+<!-- ``` -->
+<!-- But correlation is not causation, the next step will be to determine the significance of this results based on an F-test for the multiple regression model. -->
+<!-- # Multiple linear regression (mlr) -->
+<!-- In regression analysis, the [**ANOVA F-test**](https://www.geeksforgeeks.org/r-language/anova-test-in-r-programming/) is used to evaluate whether the model respectively the model-parameters significantly explains the variability in the dependent variable, we will use a significance level of 0.05. -->
+<!-- Due to F-statistic the model and the parameters are significant! -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- # divide data set in trainings- and test data -->
+<!-- # index <- createDataPartition(data.schleuse.cor$N, p = .70, list = FALSE) -->
+<!-- # train.data <- data.schleuse.cor[index, ] -->
+<!-- # test.data <- data.schleuse.cor[-index, ] -->
+<!-- # dim(train.data) -->
+<!-- # dim(test.data) -->
+<!-- # save train- and test data -->
+<!-- # saveRDS(train.data, "train.data.rds") -->
+<!-- # saveRDS(test.data, "test.data.rds") -->
+<!-- # load data -->
+<!-- train.data <- readRDS("train.data.rds") -->
+<!-- test.data <- readRDS("test.data.rds") -->
+<!-- # perform multiple linear regression -->
+<!-- options(contrasts = c("contr.sum", "contr.poly")) -->
+<!-- set.seed(100) -->
+<!-- reg.mod  <-  lm(N ~  scale(parameter_1) + scale(parameter_2) + scale(parameter_3) + scale(parameter_4) + scale(parameter_5), train.data) -->
+<!-- # summirise the results -->
+<!-- summary(reg.mod) -->
+<!-- # prediction -->
+<!-- pred.reg <- predict(reg.mod, test.data) -->
+<!-- test.data$predict <- pred.reg -->
+<!-- # R^2 (Test data!!) -->
+<!-- # (R2 = 1 - sum((test.data$N - test.data$predict)^2) / sum((test.data$N - mean(test.data$N))^2)) -->
+<!-- # ------------------- ANHANG ------------------- -->
+<!-- # reg.mod  <-  lm(N ~  parameter_1 + parameter_2 + parameter_3 + parameter_4 + parameter_5, train.data) -->
+<!-- # reg.mod  <-  lm(N ~  parameter_1 * parameter_2 * parameter_3 * parameter_4 * parameter_5, train.data) -->
+<!-- # reg.mod  <-  lm(N ~  scale(parameter_1) * scale(parameter_2) * scale(parameter_3) * scale(parameter_4) * scale(parameter_5), train.data) -->
+<!-- ``` -->
+<!-- ## Actual vs. estimated nitrogen content according to mlr -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- #| label: fig-ActualVsEstimatedMLR -->
+<!-- #| fig-cap: Actual vs. estimated nitrogen content according to mlr  -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-pos: "H" -->
+<!-- #| fig-width: 10 -->
+<!-- #| fig-height: 7 -->
+<!-- # Plot Messung gegen Schätzung -->
+<!-- ggplot(test.data, aes(x = predict, y = N)) + -->
+<!--   geom_point() + -->
+<!--   geom_abline(intercept=0, slope=1) + -->
+<!--   scale_x_continuous(breaks = pretty_breaks(n = 10), limits = c(0.3, 0.46)) + -->
+<!--   scale_y_continuous(breaks = pretty_breaks(n = 10), limits = c(0.3, 0.46)) + -->
+<!--   theme_bw(base_size = 25) + annotate("text", x = 0.43, y = 0.32, label = "R^2 == 0.41", size = 8, parse = T) + -->
+<!--   labs(x='estimated nitrogen content [wt.%]', y='actual nitrogen content [wt.%]', title='Multiple lineare Regression') -->
+<!-- ``` -->
+<!-- ## Feature importance according to mlr -->
+<!-- In @fig-EffectLinearRegression are the coefficients (effect size) of the multiple linear regression showed. Variable_3 has the biggest influence on the nitrogen solubility, the higher this parameter is, the higher is also the nitrogen content in the molten steel. On the other hand the higher the Variable \_4 and Variable \_5 are, the lower is the solubility of nitrogen in the molten steel. -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- #| label: fig-EffectLinearRegression -->
+<!-- #| fig-cap: Impact of diverse parameters on the nitrogen content in molten steel -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-pos: "H" -->
+<!-- #| fig-width: 10 -->
+<!-- #| fig-height: 9 -->
+<!-- # extract model-coefficients -->
+<!-- koeff <- data.frame(reg.mod[["coefficients"]]) -->
+<!-- # make row to cols and rename col -->
+<!-- koeff <- koeff %>% rownames_to_column("Parameter") %>% rename("Model coefficients" = "reg.mod...coefficients...") -->
+<!-- # remove not significant or intercept -->
+<!-- koeff <- koeff %>% filter(!row_number() %in% c(1)) -->
+<!-- # Plot -->
+<!-- #png("KoeffRegModOhneInteraktion.png", width = 1500, height = 800) -->
+<!-- koeff %>% -->
+<!--   arrange(desc(abs(`Model coefficients`))) %>% # First sort by val. This sort the dataframe but NOT the factor levels -->
+<!--   mutate(Parameter = factor(Parameter, levels = Parameter)) %>% # This trick update the factor levels -->
+<!--   ggplot(aes(x = Parameter, y = `Model coefficients`)) + geom_point(size = 6) + xlab("") + -->
+<!--   scale_y_continuous(name = "coefficients of the model",  breaks=pretty_breaks(n=10)) + -->
+<!--   theme_bw(base_size = 25) + -->
+<!--   theme( -->
+<!--     #title = element_text(size = 16), -->
+<!--   #                  axis.title.x = element_text(size = 16), -->
+<!--                     #axis.text.x = element_text(size = 20,angle=45,vjust=0.5), -->
+<!--                     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), -->
+<!--   #                  axis.title.y = element_text(size = 15,vjust=1.7), -->
+<!--   #                  axis.text.y = element_text(size = 16), -->
+<!--   #                  legend.title = element_text(size = 16), -->
+<!--   #                  legend.text = element_text(size = 16), -->
+<!--                     panel.grid.major = element_blank(), panel.grid.minor = element_blank(), -->
+<!--                     strip.text = element_text(size = 16)) -->
+<!-- #dev.off() -->
+<!-- ``` -->
+<!-- But according to relative small R\^2 the mlr model can not describe the deviations in response-value (nitrogen content) not really good. -->
+<!-- Let us use machine learning algorithm e**X**treme **G**radient **B**oosting with XGBoost package in R -->
+<!-- # XGBoost -->
+<!-- Below you see the best / optimum cross validation and tuning parameters (called *hyperparameters*, for more information visit [TuningOfParameters](https://carpentries-incubator.github.io/r-ml-tabular-data/06-Exploration/index.html)) for XGBoost method. Thanks to this hyperparameters the model will optimize the estimation of nitrogen content respectively the reliability of the model. -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- # load library -->
+<!-- library(xgboost) -->
+<!-- library(SHAPforxgboost) -->
+<!-- library(doParallel) -->
+<!-- # defeine trainings and test data - define variables / predictors  -->
+<!-- x_train <- data.matrix(train.data[, c("parameter_1", "parameter_2", "parameter_3", "parameter_4", "parameter_5")]) -->
+<!-- x_test <- data.matrix(test.data[, c("parameter_1", "parameter_2", "parameter_3", "parameter_4", "parameter_5")]) -->
+<!-- # Defining the Target -->
+<!-- y_train <- train.data$N -->
+<!-- y_test <- test.data$N -->
+<!-- #define final training and testing sets -->
+<!-- xgb_train = xgb.DMatrix(data = x_train, label = y_train) -->
+<!-- xgb_test = xgb.DMatrix(data = x_test, label = y_test) -->
+<!-- #define watchlist -->
+<!-- watchlist = list(train = xgb_train, test = xgb_test) -->
+<!-- # -------------------------- Search for optimal hyparparameters with xgboost package -------------------------- -->
+<!-- ############ !!!!!!!!!!!!! With xgb.cv() command !!!!!!!!!!!!! -->
+<!-- ############ !!!!!!!!!!!!! With xgb.cv() command !!!!!!!!!!!!! -->
+<!-- # see for more information https://carpentries-incubator.github.io/r-ml-tabular-data/06-Exploration/index.html -->
+<!-- # paramDF <- expand.grid( -->
+<!-- #   nrounds = c(100, 500), -->
+<!-- #   max_depth =c(3, 6, 8),# 6 is default value -->
+<!-- #   learning_rate = c(0.001, 0.01, 0.1), #eta, 0.3 is default value -->
+<!-- #   gamma = c(0, 0.1, 0.5),# 0 is default value -->
+<!-- #   colsample_bytree = c(0.6, 0.8, 1),# 1 is default value -->
+<!-- #   min_child_weight =c(1, 3, 5), # 1 is default -->
+<!-- #   subsample = c(1),# 1 is default -->
+<!-- #   reg_lambda = c(0.1, 1, 10), #lambda default is 1 -->
+<!-- #   reg_alpha = c(0, 1, 10)# 0 ist default -->
+<!-- #   ) -->
+<!-- # paramList <- lapply(split(paramDF, 1:nrow(paramDF)), as.list) -->
+<!-- # bestResults <- tibble() -->
+<!-- # Set up parallel backend - parallel computing occurs automatically -->
+<!-- # set.seed(100) -->
+<!-- # pb <- txtProgressBar(style = 3) -->
+<!-- # for(i in seq(length(paramList))) { -->
+<!-- #   rwCV <- xgb.cv(params = paramList[[i]], -->
+<!-- #                      data = xgb_train, -->
+<!-- #                      nfold = 5, -->
+<!-- #                      nrounds = paramDF$nrounds, -->
+<!-- #                      early_stopping_rounds = 10, -->
+<!-- #                      verbose = FALSE) -->
+<!-- #   bestResults <- bestResults %>% -->
+<!-- #     bind_rows(rwCV$evaluation_log[rwCV$best_iteration]) -->
+<!-- #   gc()  # Free unused memory after each loop iteration -->
+<!-- #   setTxtProgressBar(pb, i/length(paramList)) -->
+<!-- # } -->
+<!-- # below: perform after for-loop!!! -->
+<!-- # close(pb) # done with the progress bar -->
+<!-- ########################## In "rwCV" / "rwCV$evaluation_log" sind werte von der letzten Berechnung -->
+<!-- ########################## enthalten, sprich von letzten Parametern in paramDF (500, 8, 0.1 etc.) -->
+<!-- # depth_leaves <- bind_cols(paramDF, bestResults) -->
+<!-- # library(gdata) -->
+<!-- # depth_leaves <- cbindX(paramDF, bestResults) -->
+<!-- # depth_leaves[which.min(depth_leaves$test_rmse_mean),] -->
+<!-- # save best model-parameter -->
+<!-- # save(depth_leaves, file = "depth_leaves.rda") -->
+<!-- # load model and data -->
+<!-- load("depth_leaves.rda") -->
+<!-- # show the best parameters (eta, max_depth etc.), where test values are at minimum -->
+<!-- depth_leaves[which.min(depth_leaves$test_rmse_mean),] # or see rwCV.$best_iteration -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- # -------------------------- define XGBoost model -------------------------- -->
+<!-- # set.seed(100) -->
+<!-- mod.xgb = xgb.train(data = xgb_train, watchlist=watchlist, verbose = 0, nrounds = 100, max_depth = 8, eta = 0.1, gamma = 0, colsample.bytree = 1, min_child_weight = 3, subsample = 1, lambda = 1, alpha = 0) # eta = learning_rate -->
+<!-- #use model to make predictions on test data -->
+<!-- pred_y = predict(mod.xgb, xgb_test) -->
+<!-- # new column for estimated values -->
+<!-- test.data$predict <- pred_y -->
+<!-- # R^2 -->
+<!-- # (R2 = 1 - sum((test.data$N - test.data$predict)^2) / sum((test.data$N - mean(test.data$N))^2)) -->
+<!-- ``` -->
+<!-- ## Actual vs. estimated nitrogen content according to XGBOOST -->
+<!-- The R^2^ with 0.54 is compared to mlr ( 0.41) much better! -->
+<!-- Of course this can be improved by including of further process parameters. But for the sake of simplicity we will use here only five parameters. -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- #| label: fig-ActualVsEstimatedXGBoost -->
+<!-- #| fig-cap: Actual vs. estimated nitrogen content according to XGBoost -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-pos: "H" -->
+<!-- #| fig-width: 10 -->
+<!-- #| fig-height: 7 -->
+<!-- # Plot Messung gegen Schätzung -->
+<!-- ggplot(test.data, aes(x = predict, y = N)) + -->
+<!--   geom_point() + -->
+<!--   geom_abline(intercept=0, slope=1) + -->
+<!--   scale_x_continuous(breaks = pretty_breaks(n = 10), limits = c(0.3, 0.46)) + -->
+<!--   scale_y_continuous(breaks = pretty_breaks(n = 10), limits = c(0.3, 0.46)) + -->
+<!--   theme_bw(base_size = 25) + annotate("text", x = 0.44, y = 0.32, label = "R^2 == 0.54", size = 8, parse = T) + -->
+<!--   labs(x='Berechneter N-Wert', y='Gemessener N-Wert', title='XGBOOST') -->
+<!-- ``` -->
+<!-- ## Feature importance according to "Tree Shap" -->
+<!-- The SHAP summary plot is a very suitable depiction to get a overview about the effect sizes of the parameters (for more information to "SHAP for XGBoost in R" see [SHAPvalues](https://liuyanguu.github.io/post/2019/07/18/visualization-of-shap-for-xgboost/)). -->
+<!-- Like mlr the parameter_3 is the most important process parameter to control the nitrogen content in pressure-electroslag-remelting furnace! As this increases, the nitrogen content of the molten steel also increases. -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- #| label: fig-ShapFeatureSummary -->
+<!-- #| fig-cap: Effects of individual parameters according to XGBOOST   -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-pos: "H" -->
+<!-- #| fig-width: 10 -->
+<!-- #| fig-height: 8 -->
+<!-- # https://liuyanguu.github.io/post/2019/07/18/visualization-of-shap-for-xgboost/ -->
+<!-- # library(SHAPforxgboost) -->
+<!-- # To return the SHAP values and ranked features by mean|SHAP| -->
+<!-- shap_values <- shap.values(xgb_model = mod.xgb, X_train = x_test) -->
+<!-- # The ranked features by mean |SHAP| -->
+<!-- # shap_values.ein$mean_shap_score -->
+<!-- # To prepare the long-format data: -->
+<!-- shap_long <- shap.prep(xgb_model = mod.xgb, X_train = x_test) -->
+<!-- # is the same as: using given shap_contrib -->
+<!-- shap_long <- shap.prep(shap_contrib = shap_values$shap_score, X_train = x_test) -->
+<!-- # **SHAP summary plot** -->
+<!-- #png("HBAlleFaktorenMnCr-Einsaztstähle.png", width = 1500, height = 800) -->
+<!-- shap.plot.summary(shap.prep(xgb_model = mod.xgb, X_train = x_test)) + theme_bw(base_size = 20) + theme(legend.position = "bottom") -->
+<!-- #dev.off() -->
+<!-- ## Median als rheihenfolge statt Mittelwert -->
+<!-- # g <- shap_long %>% group_by(variable) %>%  mutate(mean_value = median(abs(value))) -->
+<!-- # shap.plot.summary(g) -->
+<!-- ``` -->
+<!-- The influence of individual process parameters are showed in detail below. -->
+<!-- ```{r} -->
+<!-- #| warning: FALSE -->
+<!-- #| echo: False -->
+<!-- #| message: False -->
+<!-- #| label: fig-ShapFeatureprogression -->
+<!-- #| fig-cap: Progression of effects of individual parameters according to XGBOOST   -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-pos: "H" -->
+<!-- #| fig-width: 10 -->
+<!-- #| fig-height: 12 -->
+<!-- data.feature <-  shap.prep(mod.xgb, X_train = as.matrix(x_test)) -->
+<!-- shap.values.feature <- shap.values(mod.xgb, x_test) -->
+<!-- features.ranked <- names(shap.values.feature$mean_shap_score)[1:5] -->
+<!-- fig.list <- lapply(features.ranked, shap.plot.dependence, data_long = data.feature) -->
+<!-- gridExtra::grid.arrange(grobs = fig.list, ncol = 2) -->
+<!-- ``` -->
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2025, Mustafa Budak</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
