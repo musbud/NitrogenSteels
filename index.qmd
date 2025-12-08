@@ -27,7 +27,7 @@ According to the correlation matrix, Variable_3 shows the strongest positive cor
 #| fig-width: 10
 #| fig-height: 10
 
-# loadlibraries
+# load libraries
 library(tidyverse)
 library(scales)
 library(ggcorrplot)
@@ -71,8 +71,8 @@ Based on the F-statistic, the model (with a p-value \< 2.2e-16) and its paramete
 # saveRDS(test.data, "test.data.rds")
 
 # load data
-train.data <- readRDS("train.data.rds")
-test.data <- readRDS("test.data.rds")
+train.data <- readRDS("train.data.rds") # use your own train data
+test.data <- readRDS("test.data.rds") # use your own test data
 
 # perform multiple linear regression
 options(contrasts = c("contr.sum", "contr.poly"))
