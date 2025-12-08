@@ -103,8 +103,7 @@ test.data$predict <- pred.reg
 #| fig-height: 7
 
 
-# Plot Messung gegen Schätzung
-
+# Plot actual vs. estimated nitrogen content
 ggplot(test.data, aes(x = predict, y = N)) +
   geom_point() +
   geom_abline(intercept=0, slope=1) +
@@ -112,8 +111,6 @@ ggplot(test.data, aes(x = predict, y = N)) +
   scale_y_continuous(breaks = pretty_breaks(n = 10), limits = c(0.3, 0.46)) +
   theme_bw(base_size = 25) + annotate("text", x = 0.43, y = 0.32, label = "R^2 == 0.41", size = 8, parse = T) +
   labs(x='estimated nitrogen content [wt.%]', y='actual nitrogen content [wt.%]', title='Multiple lineare Regression')
-
-
 ```
 
 ## Feature importance according to MLR
@@ -135,11 +132,10 @@ ggplot(test.data, aes(x = predict, y = N)) +
 koeff <- data.frame(reg.mod[["coefficients"]])
 # make row to cols and rename col
 koeff <- koeff %>% rownames_to_column("Parameter") %>% rename("Model coefficients" = "reg.mod...coefficients...")
-# remove not significant or intercept
+# remove not significant parameters or intercept
 koeff <- koeff %>% filter(!row_number() %in% c(1))
 
-# Plot
-#png("KoeffRegModOhneInteraktion.png", width = 1500, height = 800)
+# Plot coefficients
 koeff %>%
   arrange(desc(abs(`Model coefficients`))) %>% # First sort by val. This sort the dataframe but NOT the factor levels
   mutate(Parameter = factor(Parameter, levels = Parameter)) %>% # This trick update the factor levels
@@ -147,19 +143,11 @@ koeff %>%
   scale_y_continuous(name = "coefficients of the model",  breaks=pretty_breaks(n=10)) +
   theme_bw(base_size = 25) +
   theme(
-    #title = element_text(size = 16),
-  #                  axis.title.x = element_text(size = 16),
-                    #axis.text.x = element_text(size = 20,angle=45,vjust=0.5),
-                    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
-  #                  axis.title.y = element_text(size = 15,vjust=1.7),
-  #                  axis.text.y = element_text(size = 16),
-  #                  legend.title = element_text(size = 16),
-  #                  legend.text = element_text(size = 16),
-                    panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                    strip.text = element_text(size = 16))
-
-#dev.off()
-
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    strip.text = element_text(size = 16)
+    )
 ```
 
 However, due to the relatively small R² value, the MLR model cannot adequately capture the deviations in the response variable (nitrogen content). Let us apply the eXtreme Gradient Boosting algorithm using the XGBoost package in R to determine whether it improves the model performance.
