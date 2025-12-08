@@ -37,7 +37,7 @@ library(caret)
 data.cor <- readRDS("data.cor.rds") # load your data set
 
 # create correlation matrix
-cor_matrix <- cor(data.cor[, c("N", "parameter_1", "parameter_2", "parameter_3", "parameter_4", "parameter_5")], use = "pairwise.complete.obs")  # Ges-Druck viele Na"s
+cor_matrix <- cor(data.cor[, c("N", "parameter_1", "parameter_2", "parameter_3", "parameter_4", "parameter_5")], use = "pairwise.complete.obs")
 
 
 # Plot correlation matrix
@@ -58,9 +58,9 @@ Based on the F-statistic, the model (with a p-value \< 2.2e-16) and its paramete
 #| message: False
 
 # divide data set in trainings- and test data
-# index <- createDataPartition(data.schleuse.cor$N, p = .70, list = FALSE)
-# train.data <- data.schleuse.cor[index, ]
-# test.data <- data.schleuse.cor[-index, ]
+# index <- createDataPartition(data.cor$N, p = .70, list = FALSE)
+# train.data <- data.cor[index, ]
+# test.data <- data.cor[-index, ]
 # dim(train.data)
 # dim(test.data)
 
@@ -78,22 +78,15 @@ options(contrasts = c("contr.sum", "contr.poly"))
 set.seed(100)
 reg.mod  <-  lm(N ~  scale(parameter_1) + scale(parameter_2) + scale(parameter_3) + scale(parameter_4) + scale(parameter_5), train.data)
 
-# summirise the results
+# summarise the results
 summary(reg.mod)
 
 # prediction
 pred.reg <- predict(reg.mod, test.data)
 test.data$predict <- pred.reg
 
-# R^2 (Test data!!)
+# calculate R^2 
 # (R2 = 1 - sum((test.data$N - test.data$predict)^2) / sum((test.data$N - mean(test.data$N))^2))
-
-# ------------------- ANHANG -------------------
-# reg.mod  <-  lm(N ~  parameter_1 + parameter_2 + parameter_3 + parameter_4 + parameter_5, train.data)
-
-# reg.mod  <-  lm(N ~  parameter_1 * parameter_2 * parameter_3 * parameter_4 * parameter_5, train.data)
-
-# reg.mod  <-  lm(N ~  scale(parameter_1) * scale(parameter_2) * scale(parameter_3) * scale(parameter_4) * scale(parameter_5), train.data)
 ```
 
 ## Actual vs. estimated nitrogen content according to MLR
