@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "High nitrogen alloyed stainless steels",
+    "title": "Intro",
     "section": "",
-    "text": "Nitrogen-alloyed stainless steels are special grades that are particularly used in the aerospace, energy, and medical sectors. Nitrogen, as a key alloying element, provides the material with high tensile strength, improves corrosion resistance, and stabilizes the formation of an austenitic microstructure.\nHowever, nitrogen has a low solubility in molten steel or iron (maximum approximately 0.04 wt-%). Higher nitrogen levels can be achieved by alloying with elements such as chromium, manganese, or molybdenum, which increase the solubility of nitrogen in molten steel. Another approach to retain nitrogen in molten steel is to increase the nitrogen partial pressure in the furnace. Energietechnik Essen GmbH (ETE) operates a pressure-electroslag-remelting (PESR) furnace to enhance the nitrogen content in stainless steels."
+    "text": "The following chapters provide a brief explanation of nitrogen-alloyed stainless steels and an illustrative procedure for controlling their nitrogen content during the pressure-electroslag-remelting (PESR) process at Energietechnik Essen GmbH. The data-based analysis of nitrogen content, dependent on individual process parameters, was conducted using R (an open-source statistical programming language).\nFeel free to leverage the R-scripts provided in the musbud/NitrogenSteels repository for your own applications."
   },
   {
     "objectID": "about.html",
@@ -107,29 +107,29 @@
   {
     "objectID": "index.html#actual-vs.-estimated-nitrogen-content-according-to-mlr",
     "href": "index.html#actual-vs.-estimated-nitrogen-content-according-to-mlr",
-    "title": "High nitrogen alloyed stainless steels",
+    "title": "Intro",
     "section": "Actual vs. estimated nitrogen content according to MLR",
     "text": "Actual vs. estimated nitrogen content according to MLR\n\n\n\n\n\n\n\n\nFigure 2: Actual vs. estimated nitrogen content according to mlr"
   },
   {
     "objectID": "index.html#feature-importance-according-to-mlr",
     "href": "index.html#feature-importance-according-to-mlr",
-    "title": "High nitrogen alloyed stainless steels",
+    "title": "Intro",
     "section": "Feature importance according to MLR",
     "text": "Feature importance according to MLR\nFigure 3 shows the scaled coefficients of the MLR model. Variable_3 has the greatest influence on nitrogen solubility: the higher this parameter, the higher the nitrogen content in the molten steel. Conversely, the higher Variable_4 and Variable_5, the lower the solubility of nitrogen in the molten steel.\n\n\n\n\n\n\n\n\nFigure 3: Impact of diverse parameters on the nitrogen content in molten steel\n\n\n\n\n\nHowever, due to the relatively small R² value, the MLR model cannot adequately capture the deviations in the response variable (nitrogen content). Let us apply the eXtreme Gradient Boosting algorithm using the XGBoost package in R to determine whether it improves the model performance."
   },
   {
     "objectID": "index.html#actual-vs.-estimated-nitrogen-content-according-to-xgboost",
     "href": "index.html#actual-vs.-estimated-nitrogen-content-according-to-xgboost",
-    "title": "High nitrogen alloyed stainless steels",
+    "title": "Intro",
     "section": "Actual vs. estimated nitrogen content according to XGBOOST",
     "text": "Actual vs. estimated nitrogen content according to XGBOOST\nThe R² value of 0.54 is significantly higher compared to that of the MLR model (0.45), indicating a much better fit.\nOf course, this can be further improved by including additional process parameters. For the sake of simplicity, we have used only five parameters here.\n\n\n\n\n\n\n\n\nFigure 4: Actual vs. estimated nitrogen content according to XGBoost"
   },
   {
     "objectID": "index.html#feature-importance-according-to-tree-shap",
     "href": "index.html#feature-importance-according-to-tree-shap",
-    "title": "High nitrogen alloyed stainless steels",
+    "title": "Intro",
     "section": "Feature importance according to “Tree Shap”",
-    "text": "Feature importance according to “Tree Shap”\nThe SHAP summary plot provides an excellent visualization for obtaining an overview of the effect sizes of the parameters (for more information to “SHAP for XGBoost in R” see SHAPvalues).\nSimilar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the pressure-electroslag-remelting (PESR) furnace. As this parameter increases, the nitrogen content in the molten steel also increases.\n\n\n\n\n\n\n\n\nFigure 5: Effects of individual parameters according to XGBOOST\n\n\n\n\n\nThe influence of individual process parameters is shown in detail below. The red line indicates the curve progression according to the XGB model, and the points represent the measured SHAP values for each process parameter. For instance, as parameter_3 (x-axis) increases, the SHAP value (y-axis) - and consequently the nitrogen content in the steel - also increases.\n\n\n\n\n\n\n\n\nFigure 6: Progression of effects of individual parameters according to XGBOOST"
+    "text": "Feature importance according to “Tree Shap”\nThe SHAP summary plot provides an excellent visualization for obtaining an overview of the effect sizes of the parameters (for more information to “SHAP for XGBoost in R” see SHAPvalues).\nSimilar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the PESR-furnace. As this parameter increases, the nitrogen content in the molten steel also increases.\n\n\n\n\n\n\n\n\nFigure 5: Effects of individual parameters according to XGBOOST\n\n\n\n\n\nThe influence of individual process parameters is shown in detail below. The red line indicates the curve progression according to the XGB model, and the points represent the measured SHAP values for each process parameter. For instance, as parameter_3 (x-axis) increases, the SHAP value (y-axis) - and consequently the nitrogen content in the steel - also increases.\n\n\n\n\n\n\n\n\nFigure 6: Progression of effects of individual parameters according to XGBOOST"
   }
 ]

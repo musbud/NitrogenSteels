@@ -133,7 +133,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#high-nitrogen-alloyed-stainless-steels" id="toc-high-nitrogen-alloyed-stainless-steels" class="nav-link active" data-scroll-target="#high-nitrogen-alloyed-stainless-steels">High nitrogen alloyed stainless steels</a></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#high-nitrogen-alloyed-stainless-steels" id="toc-high-nitrogen-alloyed-stainless-steels" class="nav-link" data-scroll-target="#high-nitrogen-alloyed-stainless-steels">High nitrogen alloyed stainless steels</a></li>
   <li><a href="#analysis-of-process-parameters-in-pesr" id="toc-analysis-of-process-parameters-in-pesr" class="nav-link" data-scroll-target="#analysis-of-process-parameters-in-pesr">Analysis of process parameters in PESR</a></li>
   <li><a href="#multiple-linear-regression-mlr" id="toc-multiple-linear-regression-mlr" class="nav-link" data-scroll-target="#multiple-linear-regression-mlr">Multiple linear regression (MLR)</a>
   <ul class="collapse">
@@ -155,10 +156,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p>The following chapters provide a brief explanation of&nbsp;<strong>nitrogen-alloyed stainless steels</strong>&nbsp;and an illustrative procedure for&nbsp;<strong>controlling their nitrogen content</strong>&nbsp;during the&nbsp;<strong>p</strong>ressure-<strong>e</strong>lectro<strong>s</strong>lag-<strong>r</strong>emelting (<strong>PESR</strong>)&nbsp;process at <a href="https://www.gmh-gruppe.de/standorte/energietechnik-essen-gmbh/">Energietechnik Essen GmbH</a>. The data-based analysis of nitrogen content, dependent on individual process parameters, was conducted using R (an open-source statistical programming language).</p>
+<p>Feel free to leverage the R-scripts provided in the <a href="#0">musbud/NitrogenSteels</a> repository for your own applications.</p>
+</section>
 <section id="high-nitrogen-alloyed-stainless-steels" class="level1">
 <h1>High nitrogen alloyed stainless steels</h1>
 <p>Nitrogen-alloyed stainless steels are special grades that are particularly used in the aerospace, energy, and medical sectors. Nitrogen, as a key alloying element, provides the material with high tensile strength, improves corrosion resistance, and stabilizes the formation of an austenitic microstructure.</p>
-<p>However, nitrogen has a low solubility in molten steel or iron (maximum approximately 0.04 wt-%). Higher nitrogen levels can be achieved by alloying with elements such as chromium, manganese, or molybdenum, which increase the solubility of nitrogen in molten steel. Another approach to retain nitrogen in molten steel is to increase the nitrogen partial pressure in the furnace. <a href="https://www.gmh-gruppe.de/standorte/energietechnik-essen-gmbh/">Energietechnik Essen GmbH</a> (ETE) operates a <strong>p</strong>ressure-<strong>e</strong>lectro<strong>s</strong>lag-<strong>r</strong>emelting (PESR) furnace to enhance the nitrogen content in stainless steels.</p>
+<p>However, nitrogen has a low solubility in molten steel or iron (maximum approximately 0.04 wt-%). Higher nitrogen levels can be achieved by alloying with elements such as chromium, manganese, or molybdenum, which increase the solubility of nitrogen in molten steel. Another approach to retain nitrogen in molten steel is to increase the nitrogen partial pressure in the furnace. <a href="https://www.gmh-gruppe.de/standorte/energietechnik-essen-gmbh/">Energietechnik Essen GmbH</a> (ETE) operates a <strong>PESR</strong>-furnace to enhance the nitrogen content in stainless steels.</p>
 </section>
 <section id="analysis-of-process-parameters-in-pesr" class="level1">
 <h1>Analysis of process parameters in PESR</h1>
@@ -167,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>According to the correlation matrix, Variable_3 shows the strongest positive correlation with the nitrogen content in the steel. This means that the higher Variable_3 is, the higher the nitrogen content in the grade. Conversely, as Variable_4 increases, the nitrogen content decreases; this parameter exhibits a negative correlation with nitrogen. Variable_5 shows almost no correlation with nitrogen, suggesting it has little to no effect on the nitrogen content of the steel.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-correlationmatrix" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-correlationmatrix" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-correlationmatrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-correlationmatrix-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
@@ -224,7 +230,7 @@ F-statistic:   352 on 5 and 2519 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2 class="anchored" data-anchor-id="actual-vs.-estimated-nitrogen-content-according-to-mlr">Actual vs.&nbsp;estimated nitrogen content according to MLR</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-ActualVsEstimatedMLR" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-ActualVsEstimatedMLR" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ActualVsEstimatedMLR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-ActualVsEstimatedMLR-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
@@ -242,7 +248,7 @@ Figure&nbsp;2: Actual vs.&nbsp;estimated nitrogen content according to mlr
 <p><a href="#fig-EffectLinearRegression" class="quarto-xref">Figure&nbsp;3</a> shows the scaled coefficients of the MLR model. Variable_3 has the greatest influence on nitrogen solubility: the higher this parameter, the higher the nitrogen content in the molten steel. Conversely, the higher Variable_4 and Variable_5, the lower the solubility of nitrogen in the molten steel.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-EffectLinearRegression" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-EffectLinearRegression" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-EffectLinearRegression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-EffectLinearRegression-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
@@ -276,7 +282,7 @@ Figure&nbsp;3: Impact of diverse parameters on the nitrogen content in molten st
 <p>Of course, this can be further <strong>improved</strong> <strong>by including additional process parameters</strong>. <strong>For the sake of simplicity, we have used only five parameters here.</strong></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-ActualVsEstimatedXGBoost" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-ActualVsEstimatedXGBoost" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ActualVsEstimatedXGBoost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-ActualVsEstimatedXGBoost-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
@@ -292,10 +298,10 @@ Figure&nbsp;4: Actual vs.&nbsp;estimated nitrogen content according to XGBoost
 <section id="feature-importance-according-to-tree-shap" class="level2">
 <h2 class="anchored" data-anchor-id="feature-importance-according-to-tree-shap">Feature importance according to “Tree Shap”</h2>
 <p>The SHAP summary plot provides an excellent visualization for obtaining an overview of the effect sizes of the parameters (for more information to “SHAP for XGBoost in R” see <a href="https://liuyanguu.github.io/post/2019/07/18/visualization-of-shap-for-xgboost/">SHAPvalues</a>).</p>
-<p>Similar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the <strong>p</strong>ressure-<strong>e</strong>lectro<strong>s</strong>lag-<strong>r</strong>emelting (PESR) furnace. As this parameter increases, the nitrogen content in the molten steel also increases.</p>
+<p>Similar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the <strong>PESR</strong>-furnace. As this parameter increases, the nitrogen content in the molten steel also increases.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-ShapFeatureSummary" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-ShapFeatureSummary" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ShapFeatureSummary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-ShapFeatureSummary-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
@@ -310,7 +316,7 @@ Figure&nbsp;5: Effects of individual parameters according to XGBOOST
 <p>The influence of individual process parameters is shown in detail below. The red line indicates the curve progression according to the XGB model, and the points represent the measured SHAP values for each process parameter. For instance, as parameter_3 (x-axis) increases, the SHAP value (y-axis) - and consequently the nitrogen content in the steel - also increases.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-ShapFeatureprogression" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-pos="H" data-fig-align="center">
+<div id="fig-ShapFeatureprogression" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" data-fig-pos="H">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ShapFeatureprogression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-ShapFeatureprogression-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-pos="H" width="960">
@@ -326,7 +332,7 @@ Figure&nbsp;6: Progression of effects of individual parameters according to XGBO
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>The assessment of the <strong>p</strong>ressure-<strong>e</strong>lectro<strong>s</strong>lag-<strong>r</strong>emelting (PESR) process was carried out in this work using data analysis techniques, including multiple linear regression (MLR) and machine learning algorithms such as Extreme Gradient Boosting (XGB). We observed that modeling with Extreme Gradient Boosting (XGB) demonstrated superior performance and provided a more effective assessment of feature importance compared to MLR.</p>
+<p>The assessment of the <strong>PESR</strong>-process was carried out in this work using data analysis techniques, including multiple linear regression (MLR) and machine learning algorithms such as Extreme Gradient Boosting (XGB). We observed that modeling with Extreme Gradient Boosting (XGB) demonstrated superior performance and provided a more effective assessment of feature importance compared to MLR.</p>
 <p>Data analysis is only one of the many methods we use at <a href="https://www.gmh-gruppe.de/standorte/energietechnik-essen-gmbh/">ETE</a>. In the next step, we will present how we optimize individual steel grades and processes through <strong>simulation</strong>.</p>
 
 
