@@ -354,7 +354,8 @@ The influence of individual process parameters is shown in detail below. The red
 data.feature <-  shap.prep(mod.xgb, X_train = as.matrix(x_test))
 shap.values.feature <- shap.values(mod.xgb, x_test)
 features.ranked <- names(shap.values.feature$mean_shap_score)[1:5]
-fig.list <- lapply(features.ranked, shap.plot.dependence, data_long = data.feature)
+fig.list <- lapply(features.ranked, shap.plot.dependence, data_long = data.feature) %>% map(~.x + theme(
+  axis.text.x = element_blank()))
 gridExtra::grid.arrange(grobs = fig.list, ncol = 2)
 ```
 
