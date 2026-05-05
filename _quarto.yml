@@ -3,15 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "Optimization of pressure-electroslag-remelting process"
+  #title: "Nitrogen steels"
   navbar:
     background: primary
     search: true
-    #left:
-        #- text: "High nitrogen alloyed stainless steels"
-         # href: index.qmd
-      #- about.qmd
-      #- PESR.qmd
+    left:
+      - href: index.qmd
+        text: Optimization of pressure-electroslag-remelting process
+      - about.qmd
+      - HighNi.qmd
     tools:
       - icon: github
         href: https://github.com/musbud/NitrogenSteels

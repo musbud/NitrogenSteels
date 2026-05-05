@@ -131,5 +131,19 @@
     "title": "Intro",
     "section": "Feature importance according to “Tree Shap”",
     "text": "Feature importance according to “Tree Shap”\nThe SHAP summary plot provides an excellent visualization for obtaining an overview of the effect sizes of the parameters (for more information to “SHAP for XGBoost in R” see SHAPvalues).\nSimilar to the MLR model, Parameter_3 is the most important process parameter for controlling the nitrogen content in the PESR-furnace. As this parameter increases, the nitrogen content in the molten steel also increases.\n\n\n\n\n\n\n\n\nFigure 5: Effects of individual parameters according to XGBOOST\n\n\n\n\n\nThe influence of individual process parameters is shown in detail below. The red line indicates the curve progression according to the XGB model, and the points represent the measured SHAP values for each process parameter. For instance, as parameter_3 (x-axis) increases, the SHAP value (y-axis) - and consequently the nitrogen content in the steel - also increases.\n\n\n\n\n\n\n\n\nFigure 6: Progression of effects of individual parameters according to XGBOOST"
+  },
+  {
+    "objectID": "docs/HighNi.html",
+    "href": "docs/HighNi.html",
+    "title": "HighNi",
+    "section": "",
+    "text": "HighNi"
+  },
+  {
+    "objectID": "HighNi.html",
+    "href": "HighNi.html",
+    "title": "HighNi",
+    "section": "",
+    "text": "HighNi\nThe limited solubility of nitrogen in molten steel can be overcome by alloying with nitrogen‑affinitive elements such as chromium, manganese, and molybdenum.\nAnother way to overcome the low solubility of nitrogen in molten steel is by introducing nitrogen at elevated pressure, which suppresses nitrogen outgassing and increases its solubility in the melt.\nClick here to find out how we do this at ETE.\n\n\n\nCathing of nitrogen\n\n\nA pressure induction furnace (called HighNi) enables melting under a controlled high‑nitrogen atmosphere, typically in the range of several to several tens of bar. This provides several key advantages:\n\nIncreased nitrogen solubility in the melt in accordance with Sieverts’ law\nSuppression of nitrogen desorption during the melting process\nPossibility to combine high nitrogen pressure with Cr‑, Mn‑ or Mo-rich alloy concepts, which further stabilize nitrogen in solid solution\n\nAs a result, nitrogen contents well above the limits achievable under atmospheric pressure can be attained at laboratory scale.\nThis furnace represents an effective and versatile tool for systematically investigating the relationships between input parameters - such as alloying elements and nitrogen pressure - and the resulting nitrogen content across different steel grades.\nThe pressure-electroslag-remelting (PESR) furnace at Energietechnik Essen GmbH enables an increase in nitrogen content in alloy grades even under operational conditions for large projects or customer requirements.\nThe intake of nitrogen in molten steel happens at the phase boundary between molten steel and nitrogen-gas. The higher the nitrogen-partial-pressure is, the higher is also the nitrogen content in the molten / solidified sample.\n\n\n\nHighNi"
   }
 ]
