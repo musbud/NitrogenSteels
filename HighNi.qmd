@@ -9,8 +9,6 @@ The limited solubility of nitrogen in molten steel can be overcome by alloying w
 
 Another way to overcome the low solubility of nitrogen in molten steel is by introducing nitrogen at elevated pressure, which suppresses nitrogen outgassing and increases its solubility in the melt.
 
-Click here to find out how we do this at ETE.
-
 ![Cathing of nitrogen](CatchingNitrogenWithAlloyElements6.png)
 
 A pressure induction furnace (called HighNi) enables melting under a controlled high‑nitrogen atmosphere, typically in the range of several to several tens of bar. This provides several key advantages:
