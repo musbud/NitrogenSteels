@@ -28,13 +28,3 @@ The **p**ressure-**e**lectro**s**lag-**r**emelting (**PESR**) furnace at [Energi
 The intake of nitrogen in molten steel happens at the phase boundary between molten steel and nitrogen-gas. The higher the nitrogen-partial-pressure is, the higher is also the nitrogen content in the molten / solidified sample.
 
 ![HighNi](HighNi_Skizze_EN.png)
-
-<!-- The small solubility of nitrogen in molten steel is one of the biggest challenges by production of high nitrogen steels. One way to increase the nitrogen content, is to add alloying elements like chromium, manganese or molybdenum, which increases the nitrogen solubility in molten steel. Another way is to add nitrogen under high pressure to avoid an outgassing of nitrogen atoms from molten steel. -->
-
-<!-- By means of small laboratory pressure-induction oven known as HighNi (s. @fig-HighNi), we are in Energietechnik Essen capable to produce high nitrogen steels. -->
-
-<!-- The intake of nitrogen in molten steel happens at the phase boundary between molten steel and nitrogen-gas. The higher the nitrogen-partial-pressure is, the higher is also the nitrogen content in the molten / solidified sample. -->
-
-<!-- Only for LinkedIn: -->
-
-<!-- For more Informationabout how we optimise the pressure-electro-slag-remelting process see LINK. -->
